@@ -1,0 +1,2 @@
+class TagMiddle < ApplicationRecord
+end
