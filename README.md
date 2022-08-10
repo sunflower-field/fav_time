@@ -1,24 +1,38 @@
-# README
+# favorite time
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+「お気に入り時間の過ごし方」を共有出来たり、提案してくれる提案型SNSサイトです。
 
-Things you may want to cover:
+### テーマを選んだ理由
+コロナ禍でステイホーム期間や自宅ワークへのシフトを経て、ライフスタイルも大きく変化し、遊び方やレジャー、時間の過ごし方の形も変わってきています。
+そんな中、お休みの時間に何をすれば良いのか？改めて迷う人も多いのではないでしょうか？
+「自分の時間の過ごし方」にターゲットを当て、自分の好きなこと、心地よいことを改めて考えるきっかけを作ることで、より多くの人が、自分らしい充実した人生を歩めるのでは？と考えました。
+そこで、普段やりたいと思っていること、こんな風にしたい！と言う「お気に入りの時間の過ごし方」をストックし、いざと言うときに提案、リスト化してくれる機能を持ち、
+共有できるサービスがあれば便利だと考え、このテーマにしました。
 
-* Ruby version
+### ターゲットユーザ
+- 充実した時間を過ごしたいと思っている人。
+- 時間の過ごし方に迷っている人。
+- 忙しい時にやりたい事は思いつくのに、いざという時思い出せない人。
+- 休日にリフレッシュしたい人。
+- 日々時間に追われている人。
 
-* System dependencies
+### 主な利用シーン
+- 休日や空いた時間にどう過ごそうか迷っている時。
+- 日々時間に追われて休日にリフレッシュしたいと思っている時。
+- 自分の心地よいと感じること、楽しいと感じることを忘れてしまっている時。
+- イライラしたり、感情的になっている時。
+- 忙しくて時間がないが、好きなことを考え一時癒されたい時。
 
-* Configuration
+## 設計書
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- Adobe Stock画像 : https://stock.adobe.com/jp
