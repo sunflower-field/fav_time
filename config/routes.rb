@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     sessions: "admins/sessions"
   }
 
-  root to: 'publics/homes#top'
+  root to: 'publics/registrations#new'
 
   namespace :admins do
     root to: 'homes#top'
