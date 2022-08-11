@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   namespace :publics do
+    get "users/my_page" => "users#show", as: "show"
     resources :post_tags, only: [:show, :index, :destroy]
     resources :likes, only: [:create, :destroy]
     resources :post_comments, except: [:index, :show]
