@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2022_08_12_075548) do
   end
 
   create_table "post_favtimes", force: :cascade do |t|
-    t.integer "costomer_id"
+    t.integer "user_id"
     t.string "image"
     t.string "title"
     t.string "introduction"

@@ -16,8 +16,6 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:show, :index, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :post_favtimes, only: [:index, :update, :show, :edit]
-    resources :orders, only: [:show, :update]
-    resources :order_details, only: [:update]
   end
 
   namespace :publics do

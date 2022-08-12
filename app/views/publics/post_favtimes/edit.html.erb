@@ -1,2 +1,19 @@
 <h1>Publics::PostFavtimes#edit</h1>
 <p>Find me in app/views/publics/post_favtimes/edit.html.erb</p>
+<%= form_with model: @post_favtime, url: edit_publics_post_favtime_path(@post_favtime.id), method::patch do |f| %>
+      <div class="form-group">
+        <label for="book_title">title</label>
+        <%= f.text_field :title, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+          <label for="book_opinion">text</label>
+         <%= f.text_area :introduction, class:"form-control" %>
+      </div>
+      <div class="form-group">
+         <%= f.submit 'Update favtime', class: "btn btn-success" %><br>
+      </div>
+      <% end %>
+        <%= link_to "Show",publics_post_favtime_path(@post_favtime) %>
+    		 |
+  	    <%= link_to "Back",publics_post_favtimes_path %>

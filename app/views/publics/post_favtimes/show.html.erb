@@ -1,2 +1,30 @@
 <h1>Publics::PostFavtimes#show</h1>
-<p>Find me in app/views/publics/post_favtimes/show.html.erb</p>
+<tbody>
+    <% @post_favtimes.each do |post_favtime| %>
+  <tr>
+    <!--<td>-->
+    <%#= link_to user_path(book.user) do %>
+     <%#= image_tag  book.user.get_profile_image(100,100) %>
+    <%# end %>
+    <!--</td>-->
+    <!--<td>-->
+    <%#= link_to post_favtime.title, book_path(book) %>
+    <!--</td>-->
+    <td>
+     <%= post_favtime.title %>
+    </td>
+    <td>
+    <%= post_favtime.introduction %>
+    </td>
+
+    </tr>
+    <% end %>
+
+
+<h2>タイトル</h2>
+<p><%= @post_favtime.title %></p>
+
+<h2>本文</h2>
+<p><%= @post_favtime.introduction %></p>
+
+</tbody>
