@@ -2,7 +2,7 @@
 <html>
 
   <head>
-      <title>FavTime</title>
+      <title>FavTimes</title>
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
@@ -14,7 +14,7 @@
     <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="/"><span>Bookers</span></a>
+        <a class="navbar-brand" href="/"><span>FavTimes</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
                       aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -29,12 +29,12 @@
             </li>
             <li>
               <%= link_to new_publics_post_favtime_path(current_user), class:"nav-link text-light" do %>
-                 <i class="<i class="fa-duotone fa-square-plus"></i>"></i>new post
+                 <i class="fa-duotone fa-square-plus"></i>new post
               <% end %>
             </li>
             <li>
               <%= link_to   publics_post_favtimes_path, class:"nav-link text-light" do %>
-                 <i class="<i class="fa-duotone fa-calendar-heart"></i>"></i>favtaimes
+                 <i class="fa-duotone fa-calendar-heart"></i>favtaimes
               <% end %>
             </li>
             <li>
