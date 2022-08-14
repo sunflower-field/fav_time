@@ -6,18 +6,18 @@
             <% @post_favtimes.each do |post_favtime| %>
           <tr>
             <td>
-            <% if post_favtime.image.attached? %>
-              <%= link_to edit_publics_post_favtime_path(post_favtime.user) do %>
+              <% if post_favtime.image.attached? %>
+               <%= link_to edit_publics_post_favtime_path(post_favtime.user) do %>
                <%= image_tag  post_favtime.image, size: "500x500" %>
+               <% end %>
               <% end %>
-
             </td>
             <!--<td>-->
             <%# else %>
               <%#= link_to post_favtime.title, book_path(book) do %>
               <%#= image_tag 'no_image.jpag', size: "500x500" %>
               <%# end %>
-            <%end %>
+            <%# end %>
             <!--</td>-->
             <td>
              <h2>タイトル</h2>
@@ -26,6 +26,16 @@
             <td>
             <h2>本文</h2>
             <p><%= @post_favtime.introduction %></p>
+            </td>
+            <td>
+             <% if @post_favtime.user == current_user %>
+              <%= link_to "Edit", edit_publics_post_favtime_path(@post_favtime), class:"btn btn-sm btn-success" %>
+             <% end %>
+            </td>
+            <td>
+             <% if @post_favtime.user == current_user %>
+              <%= link_to "Destroy", publics_user_path(@post_favtime), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
+             <% end %>
             </td>
 
             </tr>

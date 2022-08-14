@@ -19,6 +19,9 @@ class Publics::PostFavtimesController < ApplicationController
   end
 
   def destroy
+   @post_favtime = PostFavtime.find(params[:id])
+   @post_favtime.destroy
+   redirect_to publics_post_favtime_path(@post_favtime.id)
   end
 
   def new
