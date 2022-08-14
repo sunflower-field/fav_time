@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
               <h1>Publics::PostFavtimes#edit</h1>
-              <%= form_with model: @post_favtime, url: edit_publics_post_favtime_path(@post_favtime.id) do |f| %>
+              <%= form_with model: @post_favtime, url: publics_post_favtime_path(@post_favtime.id) do |f| %>
                     <div class="form-group">
                         <label for="favtime_image">image</label><br>
                         <%= f.file_field :image, accept: "image/*" %>

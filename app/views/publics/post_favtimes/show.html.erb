@@ -3,12 +3,12 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
         <tbody>
-            <% @post_favtimes.each do |post_favtime| %>
+            <%# @post_favtimes.each do |post_favtime| %>
           <tr>
             <td>
-              <% if post_favtime.image.attached? %>
-               <%= link_to edit_publics_post_favtime_path(post_favtime.user) do %>
-               <%= image_tag  post_favtime.image, size: "500x500" %>
+              <% if @post_favtime.image.attached? %>
+               <%= link_to edit_publics_post_favtime_path(@post_favtime.user) do %>
+               <%= image_tag  @post_favtime.image, size: "500x500" %>
                <% end %>
               <% end %>
             </td>
@@ -34,12 +34,12 @@
             </td>
             <td>
              <% if @post_favtime.user == current_user %>
-              <%= link_to "Destroy", publics_user_path(@post_favtime), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
+              <%= link_to "Destroy", publics_post_favtime_path(@post_favtime), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
              <% end %>
             </td>
 
             </tr>
-            <% end %>
+            <%# end %>
         </tbody>
     </div>
   </div>
