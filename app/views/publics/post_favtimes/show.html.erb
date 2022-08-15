@@ -1,45 +1,67 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-
         <tbody>
             <%# @post_favtimes.each do |post_favtime| %>
-          <tr>
-            <td>
-              <% if @post_favtime.image.attached? %>
-               <%= link_to edit_publics_post_favtime_path(@post_favtime.user) do %>
-               <%= image_tag  @post_favtime.image, size: "500x500" %>
-               <% end %>
-              <% end %>
-            </td>
-            <!--<td>-->
-            <%# else %>
-              <%#= link_to post_favtime.title, book_path(book) do %>
-              <%#= image_tag 'no_image.jpag', size: "500x500" %>
-              <%# end %>
-            <%# end %>
-            <!--</td>-->
-            <td>
-             <h2>タイトル</h2>
-             <p><%= @post_favtime.title %></p>
-            </td>
-            <td>
-            <h2>本文</h2>
-            <p><%= @post_favtime.introduction %></p>
-            </td>
-            <td>
-             <% if @post_favtime.user == current_user %>
-              <%= link_to "Edit", edit_publics_post_favtime_path(@post_favtime), class:"btn btn-sm btn-success" %>
-             <% end %>
-            </td>
-            <td>
-             <% if @post_favtime.user == current_user %>
-              <%= link_to "Destroy", publics_post_favtime_path(@post_favtime), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
-             <% end %>
-            </td>
+          <div class="card" style="width: 31.5rem;">
+              <tr>
+                <td>
+                  <% if @post_favtime.image.attached? %>
+                   <%= link_to edit_publics_post_favtime_path(@post_favtime.user), class:"card-img-top" do %>
+                   <%= image_tag  @post_favtime.image, size: "500x500" %>
+                   <% end %>
+                  <% end %>
+                </td>
+                <!--<td>-->
+                <%# else %>
+                  <%#= link_to post_favtime.title, book_path(book) do %>
+                  <%#= image_tag 'no_image.jpag', size: "500x500" %>
+                  <%# end %>
+                <%# end %>
+                <!--</td>-->
+                <div class="card-body">
+                      <% if @post_favtime.liked?(current_user) %>
+                         <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+                        <%= link_to publics_post_favtime_likes_path(@post_favtime.id), class:"btn btn-danger", method: :delete do %>
+                             <span style="color:red;">❤︎</span>
+                        <% end %>
+                     <% else %>
+                          <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+                        <%= link_to publics_post_favtime_likes_path(@post_favtime.id), class:"btn btn-outline-danger", method: :post do %>
+                            <span><i class="far fa-heart"></i></span>
+                        <% end %>
+                     <% end %>
+                     <td>
+                     <% if @post_favtime.user == current_user %>
+                      <%= link_to edit_publics_post_favtime_path(@post_favtime), class:"btn btn-outline-success" do %>
+                      <i class="far fa-edit"></i>
+                      <% end %>
+                     <% end %>
+                    </td>
+                    <td>
+                     <% if @post_favtime.user == current_user %>
+                      <%= link_to publics_post_favtime_path(@post_favtime), class:"btn btn-outline-danger", method: :delete, "data-confirm" => "本当に消しますか？" do %>
+                       <i class="far fa-trash-alt"></i>
+                      <% end %>
+                     <% end %>
+                    </td>
+                    <td>
+                     <h2>タイトル</h2>
 
-            </tr>
+                     <h5 class="card-title"><p><%= @post_favtime.title %></p></h5>
+                    </td>
+                    <td>
+                    <h2>本文</h2>
+                    <p class="card-text"><%= @post_favtime.introduction %></p>
+                    </td>
+
+
+
+
+             </tr>
             <%# end %>
+                </div>
+          </div>
         </tbody>
     </div>
   </div>
