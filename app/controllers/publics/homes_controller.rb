@@ -7,6 +7,6 @@ class Publics::HomesController < ApplicationController
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
     sign_in user
-    redirect_to publics_user_path(current_user), notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to publics_user_path(current_user), notice: 'welcome to guest!!'
   end
 end
