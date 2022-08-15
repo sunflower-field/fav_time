@@ -18,9 +18,13 @@
             </tbody>
          </table>
          <div class="row">
+            <% unless user.email == 'guest@example.com' %>
+              <% if user == current_user %>
                <%= link_to  edit_publics_user_path(user), class:"btn btn-outline-secondary btn-block" do %>
                <i class="fas fa-user-cog"></i>
                <% end %>
+              <% end %>
+            <% end %>
          </div>
 
     </div>
