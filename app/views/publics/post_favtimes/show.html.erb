@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <tbody>
+            <%# @post_favtimes.each do |post_favtime| %>
+          <div class="card" style="width: 31.5rem;">
+              <tr>
+                <td>
+                  <% if @post_favtime.image.attached? %>
+                   <%= link_to edit_publics_post_favtime_path(@post_favtime.user), class:"card-img-top" do %>
+                   <%= image_tag  @post_favtime.image, size: "500x500" %>
+                   <% end %>
+                  <% end %>
+                </td>
+                <!--<td>-->
+                <%# else %>
+                  <%#= link_to post_favtime.title, book_path(book) do %>
+                  <%#= image_tag 'no_image.jpag', size: "500x500" %>
+                  <%# end %>
+                <%# end %>
+                <!--</td>-->
+                <div class="card-body">
+                      <%= render 'like', post_favtime: @post_favtime %>
+                    <td>
+                      <h2>タイトル</h2>
+
+                      <h5 class="card-title"><p><%= @post_favtime.title %></p></h5>
+                    </td>
+                    <td>
+                      <h2>本文</h2>
+                      <p class="card-text"><%= @post_favtime.introduction %></p>
+                    </td>
+                      <%= render 'post_comments/comment', post_comment: @post_comment %>
+             </tr>
+            <%# end %>
+                </div>
+          </div>
+        </tbody>
+    </div>
+  </div>
+</div>
