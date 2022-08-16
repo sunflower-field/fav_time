@@ -2,6 +2,7 @@ class Publics::PostFavtimesController < ApplicationController
   def show
     @post_favtimes = PostFavtime.all
     @post_favtime = PostFavtime.find(params[:id])
+    @post_comments =  @post_favtime.comments
     # @user = @post_favtime.user
   end
 
@@ -34,6 +35,7 @@ class Publics::PostFavtimesController < ApplicationController
     @post_favtime = PostFavtime.new(post_favtime_params)
     @user = current_user
     @post_favtime.user = @user
+    # byebug
     @post_favtime.save
     redirect_to  publics_post_favtime_path(@post_favtime)
   end

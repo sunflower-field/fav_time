@@ -54,10 +54,11 @@ ActiveRecord::Schema.define(version: 2022_08_12_075548) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "favtime_id"
+    t.integer "post_favtime_id"
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_favtime_id"], name: "index_comments_on_post_favtime_id"
   end
 
   create_table "likes", force: :cascade do |t|

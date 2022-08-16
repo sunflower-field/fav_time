@@ -6,8 +6,8 @@ class Publics::PostCommentsController < ApplicationController
   end
 
   def destroy
-    PostComment.find_by(id: params[:id], post_favtime: params[:post_id]).destroy
-    redirect_to post_path(params[:post_id])
+    PostComment.find_by(id: params[:id], post_favtime: params[:post_favtime_id]).destroy
+    redirect_to publics_post_favtime_path(params[:post_favtime_id])
   end
 
   def create
@@ -24,6 +24,6 @@ class Publics::PostCommentsController < ApplicationController
   private
 
   def post_comment_params
-    params.require(:post_comment).permit(:post_comment)
+    params.require(:post_comment).permit(:post_comment, :user_id, :favtime_id)
   end
 end

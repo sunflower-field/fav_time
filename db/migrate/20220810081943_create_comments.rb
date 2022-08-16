@@ -3,7 +3,7 @@ class CreateComments < ActiveRecord::Migration[6.1]
     create_table :comments do |t|
 
         t.integer :user_id
-        t.integer :favtime_id
+        t.references :post_favtime
         t.text :comment
 
       t.timestamps
