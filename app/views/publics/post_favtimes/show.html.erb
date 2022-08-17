@@ -30,7 +30,15 @@
                       <h2>本文</h2>
                       <p class="card-text"><%= @post_favtime.introduction %></p>
                     </td>
-                      <%= render 'publics/post_comments/comment', post_comments: @post_comments %>
+
+
+                        <%= form_with(model:[:publics, @post_favtime, @comment], method: :post) do |f| %>
+                        <%= f.text_area :comment_comment %>
+                          <%= f.hidden_field :comment_id, value: @comment.id %>
+                          <%= f.submit 'Comment' %>
+                        <% end %>
+                      <!--コメント一覧-->
+                      <%= render 'publics/comments/comment', comments: @comments %>
              </tr>
             <%# end %>
                 </div>

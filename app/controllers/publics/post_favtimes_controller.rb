@@ -1,9 +1,8 @@
 class Publics::PostFavtimesController < ApplicationController
   def show
-    @post_favtimes = PostFavtime.all
     @post_favtime = PostFavtime.find(params[:id])
-    @post_comments =  @post_favtime.comments
-    # @user = @post_favtime.user
+    @comment = Comment.new
+    @comments =  @post_favtime.comments
   end
 
   def edit
@@ -19,6 +18,7 @@ class Publics::PostFavtimesController < ApplicationController
 
   def index
     @post_favtimes = PostFavtime.all
+    @post_favtime = PostFavtime.new
   end
 
   def destroy

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root to: 'homes#top'
-    resources :post_comments, only: [:show, :index, :destroy]
+    resources :comments, only: [:show, :index, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :post_favtimes, only: [:index, :update, :show, :edit]
   end
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :post_tags, only: [:show, :index, :destroy]
     resources :post_favtimes do
       resource :likes, only: [:create, :destroy]
-      resources :post_comments, except: [:index, :show]
+      resources :comments, except: [:index, :show]
     end
     resources :users, only: [:update, :show, :edit, :index]
   end
