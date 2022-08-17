@@ -1,0 +1,19 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <% comments.each do |comment| %>
+      <td><%= image_tag comment.user.get_profile_image(20,20) %></td>
+      <td><%= comment.user.name %></td>
+      <td><%= comment.comment %></td>
+      <td>
+        <% if comment.user == current_user %>
+        <%= link_to "edit", edit_publics_post_favtime_comment_path(comment.post_favtime,comment), class: "btn btn-outline-success p-0 p-1", style: "font-size: 8px;" %>
+      </td>
+      <td>
+        <%= link_to "destroy", publics_post_favtime_comment_path(comment.post_favtime,comment), method: :delete, class: "btn btn-outline-danger p-0 p-1", style: "font-size: 8px;" %>
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
