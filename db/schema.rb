@@ -86,9 +86,12 @@ ActiveRecord::Schema.define(version: 2022_08_12_075548) do
   end
 
   create_table "tag_middles", force: :cascade do |t|
-    t.integer "tag"
+    t.integer "post_favtime_id"
+    t.integer "post_tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_favtime_id"], name: "index_tag_middles_on_post_favtime_id"
+    t.index ["post_tag_id"], name: "index_tag_middles_on_post_tag_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,4 +112,6 @@ ActiveRecord::Schema.define(version: 2022_08_12_075548) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "likes", "post_favtimes"
   add_foreign_key "likes", "users"
+  add_foreign_key "tag_middles", "post_favtimes"
+  add_foreign_key "tag_middles", "post_tags"
 end

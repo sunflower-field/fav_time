@@ -1,2 +1,58 @@
 <%= notice %>
+<%# if @book.errors.any? %>
+  <%#= @book.errors.count %>
+  <!--error prohibited this obj from being saved:-->
+  <!--<ul>-->
+    <%# @book.errors.full_messages.each do |message| %>
+      <!--<li>-->
+        <%#= message %>
+        <!--</li>-->
+    <%# end %>
+  <!--</ul>-->
+<%# end %>
 <%= render 'userinfo', user: @user %>
+  <div class="col-md-8 offset-md-1">
+    <tbody>
+            <% @post_favtimes.each do |post_favtime| %>
+          <div class="card" style="width: 31.5rem;">
+              <tr>
+                <td>
+                  <% if post_favtime.image.attached? %>
+                   <%= link_to edit_publics_post_favtime_path(post_favtime.user), class:"card-img-top" do %>
+                   <%= image_tag  post_favtime.image, size: "500x500" %>
+                   <% end %>
+                  <% end %>
+                </td>
+                <!--<td>-->
+                <%# else %>
+                  <%#= link_to post_favtime.title, book_path(book) do %>
+                  <%#= image_tag 'no_image.jpag', size: "500x500" %>
+                  <%# end %>
+                <%# end %>
+                <!--</td>-->
+                <div class="card-body">
+                      <%= render 'publics/post_favtimes/like', post_favtime: @post_favtime %>
+                    <td>
+                      <h2>タイトル</h2>
+
+                      <h5 class="card-title"><p><%= @post_favtime.title %></p></h5>
+                    </td>
+                    <td>
+                      <h2>本文</h2>
+                      <p class="card-text"><%= @post_favtime.introduction %></p>
+                    </td>
+
+
+                        <%= form_with(model:[:publics, @post_favtime, @comment], method: :post) do |f| %>
+                        <%= f.text_area :comment %>
+                          <%= f.hidden_field :comment_id, value: @comment.id %>
+                          <%= f.submit 'Comment' %>
+                        <% end %>
+                      <!--コメント一覧-->
+                      <%= render 'publics/comments/comment', comments: @comments %>
+              </tr>
+            <% end %>
+                </div>
+          </div>
+    </tbody>
+  </div>

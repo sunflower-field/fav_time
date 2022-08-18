@@ -33,7 +33,7 @@
 
 
                         <%= form_with(model:[:publics, @post_favtime, @comment], method: :post) do |f| %>
-                        <%= f.text_area :comment_comment %>
+                          <%= f.text_area :comment %>
                           <%= f.hidden_field :comment_id, value: @comment.id %>
                           <%= f.submit 'Comment' %>
                         <% end %>
