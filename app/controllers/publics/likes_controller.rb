@@ -1,13 +1,15 @@
 class Publics::LikesController < ApplicationController
   def create
-    post_like = Like.new(user_id: current_user.id, post_favtime_id: params[:post_favtime_id])
-    post_like.save
-    redirect_to publics_post_favtime_path(params[:post_favtime_id])
+    @post_favtime = PostFavtime.find(params[:post_favtime_id])
+    like = current_user.likes.new(post_favtime_id: post_favtime.id)
+    like.save
+    redirect_to publics_post_favtime_path(post_favtime)
   end
 
   def destroy
-    post_like = Like.find_by(user_id: current_user.id, post_favtime_id: params[:post_favtime_id])
-    post_like.destroy
-    redirect_to publics_post_favtime_path(params[:post_favtime_id])
+    @post_favtime = PostFavtime.find(params[:post_favtime_id])
+    like = current_user.likes.find_by(post_favtime_id: post_favtime.id)
+    like.destroy
+    redirect_to publics_post_favtime_path(post_favtime)
   end
 end

@@ -6,8 +6,8 @@ class PostFavtime < ApplicationRecord
     has_many :likes, dependent: :destroy
     has_many :comments, dependent: :destroy
 
-  def liked?(user)
-   likes.where(user_id: user.id).exists?
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
   end
 
   def save_tag(sent_tags)
