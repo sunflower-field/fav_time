@@ -1,7 +1,7 @@
 <% if post_favtime.liked_by?(current_user) %>
                          <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
     <%= link_to publics_post_favtime_likes_path(post_favtime.id), class:"btn btn-danger", method: :delete do %>
-         <span style="color:red;">❤︎</span>
+         <span style="color:red;">❤<%= post_favtime.likes.count %>︎</span>
     <% end %>
  <% else %>
       <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
@@ -11,7 +11,7 @@
  <% end %>
  <td>
  <% if post_favtime.user == current_user %>
-  <%= link_to edit_publics_post_favtime_path(post_favtime), class:"btn btn-outline-success" do %>
+  <%= link_to edit_publics_post_favtime_comment_path(post_favtime), class:"btn btn-outline-success" do %>
   <i class="far fa-edit"></i>
   <% end %>
  <% end %>

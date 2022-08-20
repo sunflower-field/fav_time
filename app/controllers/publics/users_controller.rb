@@ -1,6 +1,7 @@
 class Publics::UsersController < ApplicationController
   def show
      @user = User.find(params[:id])
+     @comment = Comment.new
      @post_favtimes = @user.post_favtimes
   end
 
