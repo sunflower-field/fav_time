@@ -4,17 +4,17 @@
       <div class="row">
         <div class="mx-auto">
         <!--col-11 col-sm-10 col-lg-8 col-xl-6">-->
-           <%= image_tag "top.png", size: "960x540" %>
+           <%= image_tag asset_path("top.png"), size: "960x540" %>
           <div class="btn-wrapper col-10 mx-auto">
             </br>
             </br>
             <div style="text-align: center">
               <%= link_to new_user_session_path do %>
-              <%= image_tag "Log.png", size: "130x60" %>
+              <%= image_tag asset_path("Log.png"), size: "130x60" %>
               <% end %>
             　&emsp;
               <%= link_to new_user_registration_path do %>
-              <%= image_tag "Sign.png", size: "130x60" %>
+              <%= image_tag asset_path("Sign.png"),size: "130x60" %>
               <% end %>
             </div>
           </div>
