@@ -5,13 +5,15 @@
     <% end %>
  <% else %>
       <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-    <%= link_to publics_post_favtime_likes_path(post_favtime.id), class:"btn btn-outline-danger", method: :post do %>
+      <%# byebug %>
+      <%# pp post_favtime.id %>
+      <%= link_to publics_post_favtime_likes_path(post_favtime.id), class:"btn btn-outline-danger", method: :post do %>
         <span><i class="far fa-heart"></i></span>
     <% end %>
  <% end %>
  <td>
  <% if post_favtime.user == current_user %>
-  <%= link_to edit_publics_post_favtime_comment_path(post_favtime), class:"btn btn-outline-success" do %>
+  <%= link_to edit_publics_post_favtime_path(post_favtime), class:"btn btn-outline-success" do %>
   <i class="far fa-edit"></i>
   <% end %>
  <% end %>

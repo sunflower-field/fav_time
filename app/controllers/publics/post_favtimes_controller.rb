@@ -21,6 +21,7 @@ class Publics::PostFavtimesController < ApplicationController
     @post_favtimes = PostFavtime.all
     @tag_list = PostTag.all
     @post_favtime = PostFavtime.new
+    @comments = Comment.all
   end
 
   def destroy

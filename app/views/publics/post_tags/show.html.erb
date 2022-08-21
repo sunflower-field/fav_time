@@ -1,2 +1,98 @@
-<h1>Publics::PostTags#show</h1>
-<p>Find me in app/views/publics/post_tags/show.html.erb</p>
+<p id="notice"></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+
+          <%= image_tag user.get_profile_image(100,100) %>
+
+            <table class="table">
+              <tbody><tr></tr>
+                <tr>
+              	  <th>name</th>
+              	  <th><%= user.name %></th>
+                </tr>
+                <tr>
+              	  <th>introduction</th>
+              	  <th><%= user.introduction %></th>
+                </tr>
+              </tbody>
+            </table>
+           <div class="row">
+              <% unless user.email == 'guest@example.com' %>
+                <% if user == current_user %>
+                 <%= link_to  edit_publics_user_path(user), class:"btn btn-outline-secondary btn-block" do %>
+                 <i class="fas fa-user-cog"></i>
+                 <% end %>
+                <% end %>
+              <% end %>
+           </div>
+
+    </div>
+
+  <div class="col-md-8 offset-md-1">
+    <tbody>
+      <div class="card" style="width: 31.5rem;">
+            <% @post_favtimes.each do |post_favtime| %>
+              <tr>
+                  <td>
+                    <% if post_favtime.image.attached? %>
+                      <%= link_to edit_publics_post_favtime_comment_path(post_favtime.user), class:"card-img-top" do %>
+                        <%= image_tag  post_favtime.image, size: "500x500" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                            <!--<td>-->
+                            <%# else %>
+                            <%#= link_to post_favtime.title, book_path(book) do %>
+                            <%#= image_tag 'no_image.jpag', size: "500x500" %>
+                            <%# end %>
+                            <%# end %>
+                            <!--</td>-->
+                <div class="card-body">
+                  <%= render 'publics/post_favtimes/like', post_favtime: post_favtime %>
+                  <td>
+                    <div class="form-group">
+                      <label for="favtime_title">Title</label>
+                      <h5 class="card-title"><%= post_favtime.title %></h5>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <label for="favtime_introductio">Introductio</label>
+                      <h5 class="card-text"><%= post_favtime.introduction %></h5>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <label for="favtime_introductio">comment</label>
+                      <h5 class="card-text"><%= post_favtime.comments %></h5>
+                    </div>
+                  </td>
+            <% end %>
+          <!--コメント一覧-->
+            <table class="table">
+  <tbody>
+    <tr>
+      <% comments.each do |comment| %>
+      <td><%= image_tag comment.user.get_profile_image(20,20) %></td>
+      <td><%= comment.user.name %></td>
+      <td><%= comment.comment %></td>
+      <td>
+        <% if comment.user == current_user %>
+        <%= link_to "edit", edit_publics_post_favtime_comment_path(comment.post_favtime,comment), class: "btn btn-outline-success p-0 p-1", style: "font-size: 8px;" %>
+      </td>
+      <td>
+        <%= link_to "destroy", publics_post_favtime_comment_path(comment.post_favtime,comment), method: :delete, class: "btn btn-outline-danger p-0 p-1", style: "font-size: 8px;" %>
+        <% end %>
+      </td>
+    </tr>
+      <% end %>
+
+  </tbody>
+</table>
+                </div>
+          </tr>
+        </div>
+    </tbody>
+  </div>
+</main>
