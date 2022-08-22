@@ -15,49 +15,42 @@
 
   <div class="col-md-8 offset-md-1">
     <tbody>
-      <div class="card" style="width: 31.5rem;">
-            <% @post_favtimes.each do |post_favtime| %>
-              <tr>
-                  <td>
-                    <% if post_favtime.image.attached? %>
-                      <%= link_to publics_post_favtime_path(post_favtime.user), class:"card-img-top" do %>
-                        <%= image_tag  post_favtime.image, size: "500x500" %>
-                      <% end %>
-                    <% end %>
-                  </td>
-                            <!--<td>-->
-                            <%# else %>
-                            <%#= link_to post_favtime.title, book_path(book) do %>
-                            <%#= image_tag 'no_image.jpag', size: "500x500" %>
-                            <%# end %>
-                            <%# end %>
-                            <!--</td>-->
-                <div class="card-body">
-                  <%= render 'publics/post_favtimes/like', post_favtime: post_favtime %>
-                  <td>
-                    <div class="form-group">
-                      <label for="favtime_title">Title</label>
-                      <h5 class="card-title"><%= post_favtime.title %></h5>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group">
-                      <label for="favtime_introductio">Introductio</label>
-                      <h5 class="card-text"><%= post_favtime.introduction %></h5>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group">
-                      <label for="favtime_introductio">comment</label>
-                      <h5 class="card-text"><%= post_favtime.comments %></h5>
-                    </div>
-                  </td>
-            <% end %>
-          <!--コメント一覧-->
-            <%= render 'publics/comments/comment', comments: @user.comments %>
+
+            <div class="card" style="width: 31.5rem;">
+                <% @post_favtimes.each do |post_favtime| %>
+                <div class="card border-light mb-3" style="max-width: 31.5rem;">
+                  <div class="card-header"><%= image_tag post_favtime.user.get_profile_image(35,35) %></div>
+                  <%#= user.name %>
+                        <% if post_favtime.image.attached? %>
+                          <%= link_to publics_post_favtime_path(post_favtime), class:"card-img-top" do %>
+                            <%= image_tag  post_favtime.image, size: "500x500" %>
+                          <% end %>
+                        <% end %>
+                                <%# else %>
+                                <%#= link_to post_favtime.title, book_path(book) do %>
+                                <%#= image_tag 'no_image.jpag', size: "500x500" %>
+                                <%# end %>
+                                <%# end %>
+                        <div class="card-body">
+                              <%= render 'publics/post_favtimes/like', post_favtime: post_favtime %>
+                              &nbsp;&nbsp;&nbsp;
+                              <label for="favtime_introductio"><h5><i class="fas fa-comment"></i></h5></label>
+                              <h7><%= link_to publics_post_favtime_path(post_favtime) do %><%= post_favtime.comments.count %></h7>
+                                  <% end %>件
+                            <div class="form-group">
+                              <label for="favtime_title"><h5>Title &nbsp;: &nbsp;</h5></label>
+                              <h7 class="card-title"><%= post_favtime.title %></h7>
+                            </div>
+                            <div class="form-group">
+                              <label for="favtime_introductio"><h5>Introductio&nbsp;: &nbsp;</h5></label>
+                              <h7 class="card-text"><%= post_favtime.introduction %></h7>
+                            </div>
+                        </div>
                 </div>
-          </tr>
-        </div>
+                <% end %>
+            </div>
+
+      </div>
     </tbody>
   </div>
 </main>

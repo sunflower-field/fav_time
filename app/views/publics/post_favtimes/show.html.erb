@@ -7,7 +7,7 @@
               <tr>
                 <td>
                   <% if @post_favtime.image.attached? %>
-                   <%= link_to edit_publics_post_favtime_comment_path(@post_favtime.user), class:"card-img-top" do %>
+                   <%= link_to publics_post_favtime_path(@post_favtime), class:"card-img-top" do %>
                    <%= image_tag  @post_favtime.image, size: "500x500" %>
                    <% end %>
                   <% end %>
@@ -19,28 +19,26 @@
                   <%# end %>
                 <%# end %>
                 <!--</td>-->
-                <div class="card-body">
-                      <%= render 'like', post_favtime: @post_favtime %>
-                    <td>
-                       <div class="form-group">
-                         <label for="favtime_title">Title</label>
-                          <h5 class="card-title"><%= @post_favtime.title %></h5>
-                       </div>
-                    </td>
-                    <td>
-                      <div class="form-group">
-                         <label for="favtime_introductio">Introductio</label>
-                          <h5 class="card-text"><%= @post_favtime.introduction %></h5>
-                       </div>
-                    </td>
-                     <td>
-                      <div class="form-group">
-                         <label for="favtime_introductio">comment</label>
-                          <!--<h5 class="card-text">-->
-                          <%#= @post_favtime.comments %>
-                          <!--</h5>-->
-                       </div>
-                    </td>
+                <td>
+                    <div class="card-body">
+                    <%= render 'publics/post_favtimes/like', post_favtime: @post_favtime %>
+                    &nbsp;&nbsp;&nbsp;
+                    <label for="favtime_introductio"><h5><i class="fas fa-comment"></i></h5></label>
+                    <h7><%= link_to publics_post_favtime_path(@post_favtime) do %><%= @post_favtime.comments.count %></h7>
+                        <% end %>件
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <label for="favtime_title"><h5>Title &nbsp;: &nbsp;</h5></label>
+                      <h7 class="card-title"><%= @post_favtime.title %></h7>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <label for="favtime_introductio"><h5>Introductio&nbsp;: &nbsp;</h5></label>
+                      <h7 class="card-text"><%= @post_favtime.introduction %></h7>
+                    </div>
+                  </td>
 
                         <%= form_with(model:[:publics, @post_favtime, @comment], method: :post) do |f| %>
                           <%= f.text_area :comment %>

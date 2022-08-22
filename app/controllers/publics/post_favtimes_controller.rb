@@ -1,5 +1,6 @@
 class Publics::PostFavtimesController < ApplicationController
   def show
+    # byebug
     @post_favtime = PostFavtime.find(params[:id])
     @comment = Comment.new
     @comments =  @post_favtime.comments
@@ -32,7 +33,7 @@ class Publics::PostFavtimesController < ApplicationController
 
   def new
     @post_favtime = PostFavtime.new
-    @post_favtime = current_user.post_favtimes.new
+    # @post_favtime = current_user.post_favtimes.new
   end
 
   def create
