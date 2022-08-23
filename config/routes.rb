@@ -21,12 +21,14 @@ Rails.application.routes.draw do
   namespace :publics do
     post '/homes/guest_sign_in', to: 'homes#new_guest'
     get "users/my_page" => "users#show", as: "show"
-    resources :post_tags, only: [:show, :index, :destroy]
     resources :post_favtimes, only:[:new, :create, :edit, :index, :show, :update, :destroy] do
       resource :likes, only: [:create, :destroy]
       resources :comments, except: [:index, :show]
     end
     resources :users, only: [:update, :show, :edit, :index]
+    resources :post_tags do
+      get 'post_favtimes', to: 'post_favtimes#search'
+    end
   end
 
 end

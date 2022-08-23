@@ -1,0 +1,11 @@
+<h3>タグリスト</h3>
+<% @tag_list.each do |list| %>
+  <%= list.tag_name %>
+  <%= "(#{list.post_favtimes.count})" %>
+<% end %>
+<br>
+<%= "#{@tag.tag_name}" %>
+<br>
+<% @post_favtimes.each do |post_favtime| %>
+  <%= link_to post_favtime.content, post_favtime %>
+<% end %>

@@ -13,6 +13,11 @@
 <%= render 'publics/users/userinfo', user: current_user %>
   <div class="col-md-8 offset-md-1">
     <tbody>
+      <h3>タグリスト</h3>
+      <% @tag_list.each do |list| %>
+        #<%= link_to list.tag_name, publics_post_favtimes_path(post_tag_id: list.id) %>
+        <%= "(#{list.post_favtimes.count})" %>
+      <% end %>
       　<!--<div class="shadow">-->
       　  <div class="card" style="width: 31.5rem;">
           <% @post_favtimes.each do |post_favtime| %>
@@ -40,6 +45,9 @@
                       <label for="favtime_introductio"><h5>Introductio&nbsp;: &nbsp;</h5></label>
                       <h7 class="card-text"><%= post_favtime.introduction %></h7>
                     </div>
+                  <% post_favtime.post_tags.each do |post_tag| %>
+                    #<%= link_to post_tag.tag_name, publics_post_favtimes_path(post_tag_id: post_tag.id) %>
+                  <% end %>
                 </div>
           <% end %>
           </div>

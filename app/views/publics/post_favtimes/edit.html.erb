@@ -8,7 +8,7 @@
                         <%= f.file_field :image, accept: "image/*" %>
                     </div>
                     <div class="form-group">
-                        <label for="book_title">title</label>
+                        <label for="favtime_title">title</label>
                         <%= f.text_field :title, class:"form-control" %>
                     </div>
 
@@ -17,12 +17,16 @@
                         <%= f.text_area :introduction, class:"form-control" %>
                     </div>
                     <div class="form-group">
+                        <label for="favtime_tag">tag (スペースで区切ると複数タグ登録できます)</label>
+                          <%= f.text_field :tag_name, value: @tag_list,class:"form-control"%>
+                    </div>
+                    <div class="form-group">
                        <%= f.submit 'Update favtime', class: "btn btn-success" %><br>
                     </div>
                     <% end %>
                       <%= link_to "Show",publics_post_favtime_path(@post_favtime) %>
                   		 |
-                	    <%= link_to "Back",publics_post_favtimes_path %>
+                	  <%= link_to "Back",publics_post_favtimes_path %>
     </div>
   </div>
 </div>

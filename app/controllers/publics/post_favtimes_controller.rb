@@ -9,17 +9,34 @@ class Publics::PostFavtimesController < ApplicationController
 
   def edit
     @post_favtime = PostFavtime.find(params[:id])
+    @tag_list = @post_favtime.post_tags.pluck(:tag_name).join(nil)
     redirect_to(publics_post_favtimes_path) unless @post_favtime.user == current_user
   end
 
   def update
     @post_favtime = PostFavtime.find(params[:id])
-    @post_favtime.update(post_favtime_params)
-    redirect_to publics_post_favtime_path(@post_favtime.id)
+    tag_list = params[:post_favtime][:tag_name].split(nil)
+    if @post_favtime.update(post_favtime_params)
+      old_relations = TagMiddle.where(post_favtime_id: @post_favtime.id)
+      old_relations.each do |relation|
+        relation.delete
+      end
+      @post_favtime.save_tag(tag_list)
+      redirect_to publics_post_favtime_path(@post_favtime.id)
+      # , notice:'投稿完了しました:)'
+    else
+      redirect_to :action => "edit"
+    end
   end
 
   def index
-    @post_favtimes = PostFavtime.all
+    if params[:post_tag_id].present?
+       post_tag = PostTag.find(params[:post_tag_id])
+       @post_favtimes = post_tag.post_favtimes
+    else
+       @post_favtimes = PostFavtime.all
+    end
+
     @tag_list = PostTag.all
     @post_favtime = PostFavtime.new
     @comments = Comment.all
@@ -38,13 +55,19 @@ class Publics::PostFavtimesController < ApplicationController
 
   def create
     @post_favtime = current_user.post_favtimes.new(post_favtime_params)
-    post_tag_list = params[:post_favtime][:tag_name].split(nil)
+    tag_list = params[:post_favtime][:tag_name].split(nil)
     if @post_favtime.save
-      @post_favtime.save_tag(post_tag_list)
-      redirect_to publics_post_favtime_path(current_user)
+      @post_favtime.save_tag(tag_list)
+      redirect_to publics_post_favtimes_path
     else
       redirect_to new_publics_post_favtime_path
     end
+  end
+
+  def search
+    @tag_list = PostTag.all               # こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
+    @tag = PostTag.find(params[:post_tag_id])  # クリックしたタグを取得
+    @post_favtimes = @tag.post_favtimes.all           # クリックしたタグに紐付けられた投稿を全て表示
   end
 
   private
