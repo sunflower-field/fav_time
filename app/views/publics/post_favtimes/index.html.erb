@@ -10,12 +10,14 @@
     <%# end %>
   <!--</ul>-->
 <%# end %>
+<main>
 <%= render 'publics/users/userinfo', user: current_user %>
+</div>
   <div class="col-md-8 offset-md-1">
     <tbody>
       <h3>タグリスト</h3>
       <% @tag_list.each do |list| %>
-        #<%= link_to list.tag_name, publics_post_favtimes_path(post_tag_id: list.id) %>
+        <i class="fas fa-tag"></i><%= link_to list.tag_name, publics_post_favtimes_path(post_tag_id: list.id) %>
         <%= "(#{list.post_favtimes.count})" %>
       <% end %>
       　<!--<div class="shadow">-->
@@ -54,3 +56,4 @@
         <!--</div>-->
     </tbody>
   </div>
+</main>

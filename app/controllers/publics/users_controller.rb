@@ -3,6 +3,8 @@ class Publics::UsersController < ApplicationController
      @user = User.find(params[:id])
      @comment = Comment.new
      @post_favtimes = @user.post_favtimes
+     
+     @suggest_favtime = PostFavtime.offset( rand(PostFavtime.count) ).first
   end
 
   def edit
