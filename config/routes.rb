@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     post '/homes/guest_sign_in', to: 'homes#new_guest'
     get "users/my_page" => "users#show", as: "show"
     resources :post_favtimes, only:[:new, :create, :edit, :index, :show, :update, :destroy] do
+      collection do
+       get 'search'
+      end
       resource :likes, only: [:create, :destroy]
       resources :comments, except: [:index, :show]
     end

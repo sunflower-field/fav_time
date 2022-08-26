@@ -1,6 +1,6 @@
 class Publics::PostFavtimesController < ApplicationController
+
   def show
-    # byebug
     @post_favtime = PostFavtime.find(params[:id])
     @comment = Comment.new
     @comments =  @post_favtime.comments
@@ -65,9 +65,27 @@ class Publics::PostFavtimesController < ApplicationController
   end
 
   def search
-    @tag_list = PostTag.all               # こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-    @tag = PostTag.find(params[:post_tag_id])  # クリックしたタグを取得
-    @post_favtimes = @tag.post_favtimes.all           # クリックしたタグに紐付けられた投稿を全て表示
+    if params[:keyword] != nil
+      @post_favtimes = PostFavtime.search(params[:keyword])
+    elsif params[:post_tag_id] != nil
+      @tag_list = PostTag.all
+   　　@tag = Tag.find(params[:tag_id])
+      @post_favtimes = @tag.post_favtimes.all
+    else
+  　　　 @post_favtimes = PostFavtime.all
+    end
+  end
+
+  def search
+    if params[:keyword] != nil
+      @post_favtimes = PostFavtime.search(params[:keyword])
+    elsif params[:post_tag_id] != nil
+      @tag_list = Tag.all
+      @tag = PostTag.find(params[:post_tag_id])
+      @post_favtimes = @tag.post_favtimes.all
+    else
+      @post_favtimes = PostFavtime.all
+    end
   end
 
   private
@@ -75,6 +93,4 @@ class Publics::PostFavtimesController < ApplicationController
   def post_favtime_params
     params.require(:post_favtime).permit(:title, :introduction, :image, :user_id)
   end
-
-
 end

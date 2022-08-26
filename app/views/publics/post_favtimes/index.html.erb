@@ -15,12 +15,6 @@
 </div>
   <div class="col-md-8 offset-md-1">
     <tbody>
-      <h3>タグリスト</h3>
-      <% @tag_list.each do |list| %>
-        <i class="fas fa-tag"></i><%= link_to list.tag_name, publics_post_favtimes_path(post_tag_id: list.id) %>
-        <%= "(#{list.post_favtimes.count})" %>
-      <% end %>
-      　<!--<div class="shadow">-->
       　  <div class="card" style="width: 31.5rem;">
           <% @post_favtimes.each do |post_favtime| %>
                   <% if post_favtime.image.attached? %>
@@ -53,7 +47,6 @@
                 </div>
           <% end %>
           </div>
-        <!--</div>-->
     </tbody>
   </div>
 </main>

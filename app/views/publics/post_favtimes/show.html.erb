@@ -3,41 +3,31 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
         <tbody>
           <div class="card" style="width: 31.5rem;">
-              <tr>
-                <td>
                   <% if @post_favtime.image.attached? %>
                    <%= link_to publics_post_favtime_path(@post_favtime), class:"card-img-top" do %>
                    <%= image_tag  @post_favtime.image, size: "500x500" %>
                    <% end %>
                   <% end %>
-                </td>
-                <!--<td>-->
                 <%# else %>
                   <%#= link_to post_favtime.title, book_path(book) do %>
                   <%#= image_tag 'no_image.jpag', size: "500x500" %>
                   <%# end %>
                 <%# end %>
-                <!--</td>-->
-                <td>
                     <div class="card-body">
                     <%= render 'publics/post_favtimes/like', post_favtime: @post_favtime %>
                     &nbsp;&nbsp;&nbsp;
                     <label for="favtime_introductio"><h5><i class="fas fa-comment"></i></h5></label>
                     <h7><%= link_to publics_post_favtime_path(@post_favtime) do %><%= @post_favtime.comments.count %></h7>
                         <% end %>件
-                  </td>
-                  <td>
                     <div class="form-group">
                       <label for="favtime_title"><h5>Title &nbsp;: &nbsp;</h5></label>
                       <h7 class="card-title"><%= @post_favtime.title %></h7>
                     </div>
-                  </td>
-                  <td>
                     <div class="form-group">
                       <label for="favtime_introductio"><h5>Introductio&nbsp;: &nbsp;</h5></label>
                       <h7 class="card-text"><%= @post_favtime.introduction %></h7>
                     </div>
-                  </td>
+
                         <% @post_tags.each do |post_tag| %>
                           #<%= link_to post_tag.tag_name, publics_post_favtimes_path(post_tag_id: post_tag.id) %>
                           <%= "(#{post_tag.post_favtimes.count})" %>
@@ -50,7 +40,7 @@
                         <% end %>
                       <!--コメント一覧-->
                       <%= render 'publics/comments/comment', comments: @comments %>
-             </tr>
+
             <%# end %>
                 </div>
           </div>
