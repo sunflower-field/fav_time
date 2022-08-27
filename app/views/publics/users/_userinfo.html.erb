@@ -1,9 +1,4 @@
-<p id="notice"></p>
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-3">
-
-           <%= image_tag user.get_profile_image(100,100), {class: "icon"} %>
+        <%= image_tag user.get_profile_image(100,100), {class: "icon"} %>
 
             <table class="table">
             <tbody><tr></tr>
@@ -16,8 +11,8 @@
           	  <th><%= user.introduction %></th>
             </tr>
             </tbody>
-         </table>
-         <div class="row">
+            </table>
+             <div class="row">
             <% unless user.email == 'guest@example.com' %>
               <% if user == current_user %>
                <%= link_to  edit_publics_user_path(user), class:"btn btn-outline-secondary btn-block" do %>
@@ -25,6 +20,5 @@
                <% end %>
               <% end %>
             <% end %>
-         </div>
-
+             </div>
 

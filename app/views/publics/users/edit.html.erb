@@ -3,15 +3,6 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
           <h2>User info</h2>
-
-                <%# if @user.errors.any? %>
-            <!--<h3><%#= @user.errors.count %>error prohibited this obj from being saved:</h3>-->
-            <!--<ul>-->
-              <%# @user.errors.full_messages.each do |message| %>
-                <!--<li><%#= message %></li>-->
-              <%# end %>
-            <!--</ul>-->
-          <%# end %>
               <%= form_with model: @user, url: publics_user_path, local: true do |f| %>
               <div class="form-group">
                 <label for="user_name">Name</label>
@@ -30,14 +21,11 @@
             <% end %>
             </br>
             </br>
-            <div class="text-right">
+            <div class="text-right unsub">
              <%= link_to publics_unsubscribe_path do %>
-       　　　　 <button type="button" class="btn btn-outline-danger">退会する</buto
-
+       　　   　<button type="button" class="btn btn-outline-danger">退会する</button>
+             <% end %>
         　   </div>
-
-
-
     </div>
   </div>
 </div>
