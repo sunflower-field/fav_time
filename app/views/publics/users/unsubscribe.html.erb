@@ -10,10 +10,10 @@
             </p>
 
             <%= link_to publics_user_path(current_user) do %>
-            　<button type="button" class="btn btn-outline-primary">退会しない</button>
+             <button type="button" class="btn btn-outline-primary">退会しない</button>
             <% end %>
             <%= link_to publics_withdrawal_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"} do %>
-            　<button type="button" class="btn btn-outline-danger">退会する</button>
+             <button type="button" class="btn btn-outline-danger">退会する</button>
             <% end %>
         </div>
     </div>
