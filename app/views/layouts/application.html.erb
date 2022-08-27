@@ -43,7 +43,15 @@
               <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-dark" do %>
                  <i class="fas fa-sign-out-alt"></i>Log out
               <% end %>
+            <li>
+              <%= form_with(url: search_publics_post_favtimes_path, local: true, method: :get, class: "search-form")  do |f| %>
+                <%= f.text_field :keyword, placeholder: "検索する", class: "search-input" %>
+                <button type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              <% end %>
             </li>
+
 
             <% else %>
             <li>
@@ -67,14 +75,6 @@
               <% end %>
             <% end %>
             </li>
-            <li>
-              <%= form_with(url: publics_post_tag_post_favtimes_path, local: true, method: :get, class: "search-form")  do |f| %>
-                <%= f.taxt_field :keyword, placeholder: "検索する", class: "search-input" %>
-                <button type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-              <% end %>
-            </li>
 
           </ul>
         </div>
@@ -84,7 +84,7 @@
   <%#= render 'shared/flash_message' %>
   <%= yield %>
   </body>
-　</br>
+  </br>
   <footer>
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#f7f6fb">
     <div class="container mt-2">

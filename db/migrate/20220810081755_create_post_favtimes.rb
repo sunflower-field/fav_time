@@ -6,6 +6,7 @@ class CreatePostFavtimes < ActiveRecord::Migration[6.1]
       t.string :image
       t.string :title
       t.string :introduction
+      t.integer :post_tag_id
 
       t.timestamps
     end

@@ -55,7 +55,7 @@ class Publics::PostFavtimesController < ApplicationController
 
   def create
     @post_favtime = current_user.post_favtimes.new(post_favtime_params)
-    tag_list = params[:post_favtime][:tag_name].split(nil)
+    tag_list = params[:post_favtime][:tag_name].split(/[[:blank:]]+/)
     if @post_favtime.save
       @post_favtime.save_tag(tag_list)
       redirect_to publics_post_favtimes_path
@@ -67,22 +67,10 @@ class Publics::PostFavtimesController < ApplicationController
   def search
     if params[:keyword] != nil
       @post_favtimes = PostFavtime.search(params[:keyword])
-    elsif params[:post_tag_id] != nil
-      @tag_list = PostTag.all
-   　　@tag = Tag.find(params[:tag_id])
-      @post_favtimes = @tag.post_favtimes.all
-    else
-  　　　 @post_favtimes = PostFavtime.all
-    end
-  end
-
-  def search
-    if params[:keyword] != nil
-      @post_favtimes = PostFavtime.search(params[:keyword])
-    elsif params[:post_tag_id] != nil
-      @tag_list = Tag.all
-      @tag = PostTag.find(params[:post_tag_id])
-      @post_favtimes = @tag.post_favtimes.all
+    # elsif params[:post_tag_id] != nil
+    #   @tag_list = PostTag.all
+    #   @tag = PostTag.find(params[:post_tag_id])
+    #   @post_favtimes = @tag.post_favtimes.all
     else
       @post_favtimes = PostFavtime.all
     end

@@ -10,6 +10,11 @@ class PostFavtime < ApplicationRecord
     likes.exists?(user_id: user.id)
   end
 
+  def self.search(search)
+      return PostFavtime.all unless search
+      PostFavtime.where('introduction LIKE(?) or title LIKE(?)', "%#{search}%", "%#{search}%")
+  end
+
   def save_tag(sent_tags)
      current_tags = self.post_tags.pluck(:tag_name) unless self.post_tags.nil?
      old_tags = current_tags - sent_tags
