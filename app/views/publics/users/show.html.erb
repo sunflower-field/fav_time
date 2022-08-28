@@ -7,10 +7,9 @@
 
     <div class="col-md-3">
       <%= render 'userinfo', user: @user %>
-      <h2 class="mt-3">Suggest Favetime</h2>
       <% if @suggest_favtime %>
         <% if  @suggest_favtime.image.attached? %>
-      <div class="card" style="width: 15rem;">
+      <div class="card minicard" style="width: 15rem;">
         <div class="card-header">
           <%= link_to publics_user_path(@suggest_favtime.user) do %>
             <%= image_tag @suggest_favtime.user.get_profile_image(17,17), {class: "icon"} %>
@@ -19,13 +18,16 @@
         </div>
 
         <div class="card-body">
+          <p>
           <% if @suggest_favtime.image.attached? %>
             <%= link_to publics_post_favtime_path(@suggest_favtime), class:"card-img-top" do %>
               <%= image_tag  @suggest_favtime.image, size: "203x203" %>
             <% end %>
           <% end %>
-          <%= render 'publics/post_favtimes/like', post_favtime: @suggest_favtime %>
-          &nbsp;&nbsp;&nbsp;
+          </p>
+
+           <p><%= render 'publics/post_favtimes/like', post_favtime: @suggest_favtime %></p>
+
           <label for="favtime_introductio"><h5><i class="fas fa-comment"></i></h5></label>
           <h7>
               <%= link_to publics_post_favtime_path(@suggest_favtime) do %>
@@ -52,7 +54,7 @@
     <!--↑左のサイドバー部分-->
 
     <div class="col-md-8 offset-md-1">
-
+         <div class="content"><h3>Your Favtime</h3></div>
         <% @post_favtimes.each do |post_favtime| %>
         <div class="card border-light mb-3" style="max-width: 31.5rem;">
                 <div class="card-header"><%= image_tag post_favtime.user.get_profile_image(35,35), {class: "icon"} %>

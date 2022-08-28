@@ -65,12 +65,9 @@ class Publics::PostFavtimesController < ApplicationController
   end
 
   def search
+    @suggest_favtime = PostFavtime.offset( rand(PostFavtime.count) ).first
     if params[:keyword] != nil
       @post_favtimes = PostFavtime.search(params[:keyword])
-    # elsif params[:post_tag_id] != nil
-    #   @tag_list = PostTag.all
-    #   @tag = PostTag.find(params[:post_tag_id])
-    #   @post_favtimes = @tag.post_favtimes.all
     else
       @post_favtimes = PostFavtime.all
     end
