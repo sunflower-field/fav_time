@@ -1,5 +1,5 @@
 class Publics::CommentsController < ApplicationController
-  
+
   def edit
     @post_favtime = PostFavtime.find(params[:post_favtime_id])
     @comment = Comment.find(params[:id])
@@ -28,7 +28,7 @@ class Publics::CommentsController < ApplicationController
     @comment = @post_favtime.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to publics_post_favtime(@post_favtime)
+      redirect_to publics_post_favtime_path(@post_favtime)
     else
       @post_favtime = PostFavtime.find(params[:post_favtime_id])
       # @comment = Comment.new
@@ -36,7 +36,9 @@ class Publics::CommentsController < ApplicationController
       @post_tags = @post_favtime.post_tags
       @comments = @post_favtime.comments
       # flash[:alret] = "Failed to comment"
-      render "publics/post_favtimes/show"
+      # render "publics/post_favtimes/show"
+      redirect_to publics_post_favtime_path(@post_favtime)
+      flash[:alert] = "Please enter your comment!!!"
     end
   end
 

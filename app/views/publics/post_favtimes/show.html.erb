@@ -6,12 +6,15 @@
             <!--<div class="alret">-->
             <!--  <font size="5"><%#= flash[:alret] %></font>-->
             <!--</div>-->
+　　　　　　<div class="text-danger">
+            　<h2><%= flash[:alert] %></h2>
+            </div>
 
 
 
             <div class="content"><h3>Favtime detail</h3></div>
 
-            <%= render 'publics/post_favtimes/error', post_favtime: @comment %>
+
           </div>
           <div class="card" style="width: 31.5rem;">
                 <div class="card-header"><%= image_tag @post_favtime.user.get_profile_image(35,35), {class: "icon"} %>
@@ -47,7 +50,7 @@
 
                         <%= form_with(model:[:publics, @post_favtime, @comment], method: :post) do |f| %>
                           <%= f.text_area :comment %>
-                          <%= f.hidden_field :comment_id, value: @comment.id %>
+                          <%#= f.hidden_field :comment_id, value: @comment.id %>
                           <%= f.submit 'Comment' %>
                         <% end %>
                       <!--コメント一覧-->
