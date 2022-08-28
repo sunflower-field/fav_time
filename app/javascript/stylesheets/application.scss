@@ -45,3 +45,17 @@ body {
 padding: 1rem 2rem;
 border-left: 6px double #555;
 }
+
+.error {
+  padding-bottom: .5em;
+}
+.error:first-letter {
+  margin-right: .1em;
+  font-size: 1.5em;
+}
+
+.alret{
+  color: red;
+  font-size: larger;
+ 
+}

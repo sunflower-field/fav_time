@@ -30,7 +30,7 @@ Rails.application.routes.draw do
        get 'search'
       end
       resource :likes, only: [:create, :destroy]
-      resources :comments, except: [:index, :show]
+      resources :comments, only: [:create, :edit, :update, :destroy]
     end
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch '/users/withdrawal' => 'users#withdrawal', as: 'withdrawal'

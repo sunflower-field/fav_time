@@ -5,3 +5,4 @@ class TagMiddle < ApplicationRecord
   validates :post_favtime_id, presence: true
   validates :post_tag_id, presence: true
 end
+

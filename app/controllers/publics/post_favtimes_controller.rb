@@ -31,21 +31,21 @@ class Publics::PostFavtimesController < ApplicationController
 
   def index
     if params[:post_tag_id].present?
-       post_tag = PostTag.find(params[:post_tag_id])
-       @post_favtimes = post_tag.post_favtimes
+   post_tag = PostTag.find(params[:post_tag_id])
+     @post_favtimes = post_tag.post_favtimes
     else
-       @post_favtimes = PostFavtime.all
+     @post_favtimes = PostFavtime.all
     end
-
-    @tag_list = PostTag.all
-    @post_favtime = PostFavtime.new
-    @comments = Comment.all
+     @suggest_favtime = PostFavtime.offset( rand(PostFavtime.count) ).first
+     @tag_list = PostTag.all
+     @post_favtime = PostFavtime.new
+     @comments = Comment.all
   end
 
   def destroy
-   @post_favtime = PostFavtime.find(params[:id])
-   @post_favtime.destroy
-   redirect_to publics_post_favtimes_path(@post_favtime.id)
+    @post_favtime = PostFavtime.find(params[:id])
+    @post_favtime.destroy
+    redirect_to publics_post_favtimes_path(@post_favtime.id)
   end
 
   def new
@@ -58,9 +58,11 @@ class Publics::PostFavtimesController < ApplicationController
     tag_list = params[:post_favtime][:tag_name].split(/[[:blank:]]+/)
     if @post_favtime.save
       @post_favtime.save_tag(tag_list)
+      flash[:notice] = "Your post_favtime was successful."
       redirect_to publics_post_favtimes_path
     else
-      redirect_to new_publics_post_favtime_path
+      flash[:alret] = "Failed to post_favtime."
+      render 'new'
     end
   end
 

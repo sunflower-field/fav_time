@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <h1>Comment edit screen</h1>
+        <div class="content"><h1>Comment edit screen</h1></div>
 
-        <%= form_with model: @comment, url: publics_post_favtime_comment_path(@comment.id) do |f| %>
+        <%= form_with model:@comment, url: publics_post_favtime_comment_path(@post_favtime.id, @comment.id) do |f| %>
 
           <%= f.text_area :comment %>
 

@@ -1,7 +1,5 @@
-<%#= notice %>
 <% if post_favtime.errors.any? %>
-  <%= post_favtime.errors.count %>
-  error prohibited this obj from being saved:
+  <%= post_favtime.errors.count %>error prohibited this obj from being saved:
   <ul>
     <% post_favtime.errors.full_messages.each do |message| %>
       <li>

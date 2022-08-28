@@ -1,12 +1,19 @@
 class Publics::CommentsController < ApplicationController
+  
   def edit
+    @post_favtime = PostFavtime.find(params[:post_favtime_id])
     @comment = Comment.find(params[:id])
   end
 
   def update
+    @post_favtime = PostFavtime.find(params[:post_favtime_id])
     comment= Comment.find(params[:id])
-    comment.update(comment_params)
-    redirect_to publics_post_favtime_comment_path(comment.id)
+   if comment.update(comment_params)
+    redirect_to publics_post_favtime_path(@post_favtime.id)
+   else
+    flash.now[:danger] = "編集に失敗しました"
+    render 'edit'
+   end
   end
 
   def destroy
@@ -21,16 +28,20 @@ class Publics::CommentsController < ApplicationController
     @comment = @post_favtime.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to request.referer
+      redirect_to publics_post_favtime(@post_favtime)
     else
-      @post_new = PostFavtime.new
+      @post_favtime = PostFavtime.find(params[:post_favtime_id])
+      # @comment = Comment.new
+      # @post_new = PostFavtime.new
+      @post_tags = @post_favtime.post_tags
       @comments = @post_favtime.comments
-      redirect_to publics_post_favtime_post_comment_path
+      # flash[:alret] = "Failed to comment"
+      render "publics/post_favtimes/show"
     end
   end
 
-  def new
-  end
+  # def new
+  # end
 
   private
 
