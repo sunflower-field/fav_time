@@ -37,7 +37,7 @@
                   <td>
                     <% if post_favtime.image.attached? %>
                       <%= link_to edit_publics_post_favtime_comment_path(post_favtime.user), class:"card-img-top" do %>
-                        <%= image_tag  post_favtime.image, size: "500x500" %>
+                        <%= image_tag  post_favtime.image, class: "img-500-500-cover" %>
                       <% end %>
                     <% end %>
                   </td>
