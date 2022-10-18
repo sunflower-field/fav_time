@@ -64,7 +64,7 @@
                 </div>
                 <% if post_favtime.image.attached? %>
                   <%= link_to publics_post_favtime_path(post_favtime), class:"card-img-top" do %>
-                    <%= image_tag  post_favtime.image, size: "500x500" %>
+                    <%= image_tag  post_favtime.image, class: "img-500-500-cover" %>
                   <% end %>
                 <% end %>
                 <div class="card-body">

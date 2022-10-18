@@ -1,6 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+.img-500-500-cover{
+    height: 500px;
+		width: 500px;
+		object-fit: cover; // or contaion
+}
+
 .icon{
   border-radius: 50%;
 }

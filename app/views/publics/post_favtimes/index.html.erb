@@ -1,7 +1,7 @@
 <div class="error">
   <%= flash[:notice] %>
 </div>
-    
+
     <div class="container">
       <div class="row">
       <!--↓左のサイドバー部分-->
@@ -16,7 +16,7 @@
                 <%= @suggest_favtime.user.name %>
               <% end %>
             </div>
-    
+
             <div class="card-body">
               <% if @suggest_favtime.image.attached? %>
                 <%= link_to publics_post_favtime_path(@suggest_favtime), class:"card-img-top" do %>
@@ -49,7 +49,7 @@
           <% end %>
         </div>
         <!--↑左のサイドバー部分-->
-    
+
         <div class="col-md-8 offset-md-1">
             <% @post_favtimes.each do |post_favtime| %>
             <div class="card border-light mb-3" style="max-width: 31.5rem;">
@@ -60,7 +60,7 @@
                       </div>
                       <% if post_favtime.image.attached? %>
                         <%= link_to publics_post_favtime_path(post_favtime), class:"card-img-top" do %>
-                          <%= image_tag  post_favtime.image, size: "500x500" %>
+                          <%= image_tag  post_favtime.image, class: "img-500-500-cover" %>
                         <% end %>
                       <% end %>
                       <div class="card-body">
