@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :post_favtimes, only: [:index, :update, :show, :edit]
   end
 
-  scope module: :publics do
+  namespace :publics do
     post '/homes/guest_sign_in', to: 'homes#new_guest'
     get "users/my_page" => "users#show", as: "show"
     resources :post_tags do

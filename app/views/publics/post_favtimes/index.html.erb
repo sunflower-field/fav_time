@@ -70,6 +70,7 @@
                             <h7><%= link_to publics_post_favtime_path(post_favtime) do %><%= post_favtime.comments.count %></h7>
                                 <% end %>件
                           <div class="form-group">
+                            <p><%= post_favtime.created_at %></p>
                             <label for="favtime_title"><h5>Title &nbsp;: &nbsp;</h5></label>
                             <h7 class="card-title"><%= post_favtime.title %></h7>
                           </div>
