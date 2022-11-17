@@ -1,5 +1,6 @@
 <% if post_favtime.errors.any? %>
-  <%= post_favtime.errors.count %>error prohibited this obj from being saved:
+  <!--<%#= post_favtime.errors.count %>error prohibited this obj from being saved:-->
+  <%= t("errors.template.header", model: PostFavtime.model_name.human, count: post_favtime.errors.count) %>
   <ul>
     <% post_favtime.errors.full_messages.each do |message| %>
       <li>
